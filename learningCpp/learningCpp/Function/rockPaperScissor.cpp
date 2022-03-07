@@ -2,14 +2,35 @@
 using namespace std;
 
 
+// 상수인건 알겠는데 따로 노는 느낌.
+// 이럴 때에는 enum이란 것이 있다.
+const int SCISSORS = 1;
+const int ROCK = 2;
+const int PAPER = 3;
+
+// 값을 안 넣어주면 기본적으로 0이 들어간다.
+// 그 다음 값은 이전 값 + 1
+enum ENUM_SRP
+{
+    ENUM_SCISSORS = 1,
+    ENUM_ROCK,
+    ENUM_PAPER,
+};
+
+// #이 붙은 것 -> 전처리 지시문
+// #include <iostream> -> iostream이라는 파일을 찾아서 통째로 복붙 해주세요 라는 지시문.
+// 전처리 -> 컴파일 -> 링크 순으로 동작.
+#define DEFINE_SCISSORS 1
+#define DEFINE_TEST cout << "Bonjoooour !" << endl;
+
 int main() {
-        int input;
-        const int SCISSORS = 1;
-        const int ROCK = 2;
-        const int PAPER = 3;
-        int winRate;
-        int wins = 0;
-        int total = 0;
+
+    DEFINE_TEST;
+
+    int input;
+    int winRate;
+    int wins = 0;
+    int total = 0;
 
     while(true) {
         srand(time(0)); // random number generator
