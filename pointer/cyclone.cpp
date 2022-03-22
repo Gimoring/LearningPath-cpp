@@ -59,18 +59,18 @@ void SetBoard()
         {
         case RIGHT:
             nextY = y;
-            nextX = x++;
+            nextX = x+1;
             break;
         case DOWN:
-            nextY = y++;
+            nextY = y+1;
             nextX = x;
             break;
         case LEFT:
             nextY = y;
-            nextX = x--;
+            nextX = x-1;
             break;
         case UP:
-            nextY = y--;
+            nextY = y-1;
             nextX = x;
             break;   
         }
