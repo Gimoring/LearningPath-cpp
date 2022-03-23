@@ -44,61 +44,33 @@ void SetBoard()
     int y = 0;
     int x = 0;
 
+    int dy[] = {0, 1, 0, -1};
+    int dx[] = {1, 0, -1, 0};
+
     while (true)
     {
+        // 먼저 현재 좌표 박아줌.
         board[y][x] = num;
-        cout << num << endl;
+
+        // 갈수있는 한계치면 빠져나옴.
         if(num == N * N)
             break;
         
-        int nextY;
-        int nextX;
+        // 다음 y, x값은 dir에 따라 + or - ex) 오른쪽이 막혀있다면 아래로 -> y + 1, x + 0
+        int nextY = y + dy[dir];
+        int nextX = x + dx[dir]; 
 
-        
-        switch(dir)
-        {
-        case RIGHT:
-            nextY = y;
-            nextX = x++;
-            break;
-        case DOWN:
-            nextY = y++;
-            nextX = x;
-            break;
-        case LEFT:
-            nextY = y;
-            nextX = x--;
-            break;
-        case UP:
-            nextY = y--;
-            nextX = x;
-            break;   
-        }
-        
-        
         if (CanGo(nextY, nextX))
         {
+            // 길이 안막혀있으면 고
             y = nextY;
             x = nextX;
             num++;
         }
         else
-        {
-            switch(dir)
-            {
-            case RIGHT:
-                dir = DOWN;
-                break;
-            case DOWN:
-                dir = LEFT;
-                break;
-            case LEFT:
-                dir = UP;
-                break;
-            case UP:
-                dir = RIGHT;
-                break;
-            }
+        {   
+            // 길이 막히면 회전
+            dir = (dir + 1) % 4;
         }
         
     }
